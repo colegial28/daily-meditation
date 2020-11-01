@@ -1,0 +1,36 @@
+{
+  "name": "boiler-plate-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.10.11",
+    "saslprep": "^1.0.3",
+    "setprototypeof": "^1.1.1",
+    "sliced": "^1.0.1",
+    "sparse-bitfield": "^3.0.3",
+    "statuses": "^1.5.0",
+    "string_decoder": "^1.1.1",
+    "supports-color": "^5.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colegial28/integrum-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colegial28/integrum-node/issues"
+  },
+  "homepage": "https://github.com/colegial28/integrum-node#readme"
+}

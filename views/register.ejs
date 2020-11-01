@@ -1,0 +1,31 @@
+<%- include('./partials/header') %>
+<%- include('./partials/navbar') %>
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-md-6  ">
+          <!-- Default form register -->
+            <form class="text-center border border-light p-5" action="/register" method="POST">
+
+                <p class="h4 mb-4">Registrarse</p>
+                    <input type="text" id="firstName" name="firstName" class="form-control mb-4" placeholder="Nombre">       
+                    <input type="text" id="lastName" name="lastName" class="form-control mb-4 col-12" placeholder="Apellido">
+                    <input type="email" id="email" name="email" class="form-control mb-4 col-12" placeholder="Correo Electrónico">
+                    <input type="password"  id="password" name="password" class="form-control mb-4 col-12" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                    <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control col-12 " placeholder="Número de Telefono" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                    <button class="btn btn-info my-4 btn-block" type="submit">Registrarse</button>
+                <hr>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<%- include('./partials/footer') %>

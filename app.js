@@ -5,10 +5,15 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const session = require('express-session');
 
-require('dotenv').config({path:'./config/.env'});
+require('dotenv').config();
+
+
+
 
 const app = express();
 const port = process.env.PORT || 5000;
+
+
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));

@@ -1,0 +1,27 @@
+<%- include('./partials/header') %>
+<%- include('./partials/navbar') %>
+
+
+<div class="container">
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-md-6  ">
+          <!-- Default form register -->
+            <form class="text-center border border-light p-5" action="/login" method="POST">
+
+                <p class="h4 mb-4">Iniciar Sessión</p>
+                <input type="text" id="email" name="email" class="form-control mb-4 col-12" placeholder="Correo Electrónico">
+                <input type="password"  id="password" name="password" class="form-control mb-4 col-12" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                <button class="btn btn-info my-4 btn-block" type="submit">Acceder</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<%- include('./partials/footer') %>
