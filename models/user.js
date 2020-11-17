@@ -38,7 +38,9 @@ const UserSchema = new Schema(
 		userType: {
 			type: String,
 			default: ''
-		}
+		},
+		resetTokenExpiration:Date
+
 		
 		
 		

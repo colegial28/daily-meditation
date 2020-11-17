@@ -11,13 +11,16 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "mongoose": "^5.10.11",
+    "nodemailer": "^6.4.16",
+    "nodemailer-sendgrid-transport": "^0.2.0",
     "saslprep": "^1.0.3",
     "setprototypeof": "^1.1.1",
     "sliced": "^1.0.1",
     "sparse-bitfield": "^3.0.3",
     "statuses": "^1.5.0",
     "string_decoder": "^1.1.1",
-    "supports-color": "^5.5.0"
+    "supports-color": "^5.5.0",
+    "transporter": "0.0.1"
   },
   "devDependencies": {},
   "scripts": {

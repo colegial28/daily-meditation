@@ -2,6 +2,8 @@
 
 const bcrypt = require('bcryptjs');
 const utils = require('../utils/index')
+const crypto = require('crypto');
+const transporter = require("../controllers/API/sendEmail")
 
 
 let User = require("../models/user")
@@ -55,7 +57,7 @@ exports.postRegister = async(req,res)=>{
         req.session.user = newUser;
         req.session.user._id = newUser._id
 		return req.session.save((err) => {
-			return res.redirect('/newClient');
+			return res.redirect('/userHome');
 		});
 	} catch (err) {
 		console.log(err);
@@ -102,5 +104,80 @@ exports.postLogin = async(req,res)=>{
 		console.log(err);
 	}
 };
+
+exports.getRecoverPassword=(req,res)=>{
+    res.render('recoverPassword')
+}
+
+exports.postRecoverPassword=async (req,res)=>{
+	let email = req.body.email
+	try{
+	   const buffer = await crypto.randomBytes(32)
+	   var token = buffer.toString('hex')
+
+	}catch(err){
+		console.log(err);
+		return res.redirect('/recoverPassword')
+	}
+
+	try{
+		let user = await User.findOne({username:email,email:email})
+		if(!user){
+			req.flash('error','No account with that email or username')
+			return res.redirect('/recoverPassword')
+		}
+
+		user.resetToken = token;
+		user.resetTokenExpiration = Date.now()+360000
+		user.save()
+
+		transporter.sendMail({
+			to: req.body.email,
+			from: 'drivera289@gmail.com',
+			subject: 'Recuperar Contraseña',
+			html: `
+		<p>Ha solicitado un cambio de contaseña.</p>
+		<p>Para proceder presione el siguiente <a href="${process.env.ROOT_URL}/newPassword/${token}">enlace</a></p>
+		`
+		});
+
+
+	}catch(err){
+		console.log(err)
+	}
+
+
+
+}
+
+exports.getResetPassword= async(req,res)=>{
+	let token = req.params.token
+
+	try {
+		var user = await User.findOne({ resetToken: token });
+		if(!user){
+			res.redirect('/register')
+		}
+		console.log(user);
+		res.render('resetPassword', { user, token });
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+exports.postResetPassword= async(req,res)=>{
+	const newPassword =  req.body.newPassword;
+	const token = req.params.token;
+
+	try {
+		var user = await User.findOne( { resetToken: token } );
+		user.password = await bcrypt.hash(newPassword, 12);
+		user.resetToken = null;
+		await user.save();
+		res.redirect('/login');
+	} catch (err) {
+		console.log(err);
+	}
+}
 
 
